@@ -1,0 +1,14 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const media_controller_1 = require("./media.controller");
+const upload_1 = require("../../config/upload");
+const router = (0, express_1.Router)();
+const controller = new media_controller_1.MediaController();
+router.get('/specialist/:specialistId', controller.getBySpecialist);
+router.get('/file/:id', controller.getFile);
+router.post('/upload/:specialistId', upload_1.upload.single('file'), controller.upload);
+router.post('/', controller.create);
+router.put('/specialist/:specialistId/order', controller.updateOrder);
+router.delete('/:id', controller.delete);
+exports.default = router;

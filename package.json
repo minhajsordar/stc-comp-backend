@@ -1,0 +1,54 @@
+{
+  "name": "express-ts",
+  "version": "1.0.0",
+  "description": "An Starter Project For ExpressTS Backend",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "dev": "nodemon dist/index.js",
+    "build": "tsc && tsc-alias",
+    "clean": "rm -rf dist",
+    "dev:watch": "concurrently -k -n TSC,ALIAS,SERVER -c yellow,cyan,blue \"tsc -w\" \"nodemon --watch dist --ext js --exec 'tsc-alias'\"  \"nodemon 'dest/index.js'\"",
+    "watch": "tsc -w && tsc-alias",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.ts": [
+      "npm test",
+      "npm run build"
+    ]
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "ExpressTs",
+    "ExpressJs"
+  ],
+  "author": "MinhajSordar",
+  "license": "MIT",
+  "dependencies": {
+    "@types/express": "^5.0.3",
+    "cors": "^2.8.6",
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
+    "multer": "^2.0.2",
+    "pg": "^8.18.0",
+    "reflect-metadata": "^0.2.2",
+    "typeorm": "^0.3.28"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/jest": "^30.0.0",
+    "@types/multer": "^2.0.0",
+    "concurrently": "^9.2.0",
+    "husky": "^9.1.7",
+    "jest": "^30.0.3",
+    "lint-staged": "^16.1.2",
+    "ts-jest": "^29.4.0",
+    "tsc-alias": "^1.8.16",
+    "typescript": "^5.4.0"
+  }
+}
